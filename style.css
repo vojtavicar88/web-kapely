@@ -5,7 +5,7 @@
 
 html {
     scroll-behavior: smooth;
-    scroll-padding-top: 100px; /* Výška fixní hlavičky + rezerva pro nadpis */
+    scroll-padding-top: 85px; /* Upraveno pro nižší hlavičku */
 }
 
 body {
@@ -40,8 +40,8 @@ a {
     flex-direction: row;
     align-items: center;
     justify-content: flex-start;
-    padding: 16px 40px;
-    background: rgba(0, 0, 0, 0.35); /* Původní decentní propustnost */
+    padding: 8px 40px; /* Zmenšeno z 16px – ubere prostor nahoře i dole */
+    background: rgba(0, 0, 0, 0.35);
     backdrop-filter: blur(12px);
     border-bottom: 2px solid var(--red);
     position: fixed;
@@ -52,38 +52,48 @@ a {
     width: 100%;
 }
 
-/* Logo nalevo: PÖDËL nad VODY, širší a vzájemně vycentrované */
+.nav-punky ul li a {
+    font-weight: 900;
+    font-size: 17px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: #fff;
+    position: relative;
+    display: block;
+    padding: 2px 0; /* Zmenšeno z 6px pro štíhlejší profil */
+    transition: all 0.2s;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+/* Logo nalevo: Obrázek loga a podtitul */
 .logo-big {
     flex: 0 0 auto;
     display: flex;
     flex-direction: column;
-    align-items: center;      /* Vycentruje PÖDËL, VODY i podtitul na společnou osu */
+    align-items: center;
     text-align: center;
 }
 
-.logo-title {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 38px;          /* O něco větší a výraznější */
-    font-weight: 900;
-    margin: 0;
-    color: var(--red);
-    letter-spacing: 4px;      /* Širší rozestup písmen */
-    text-transform: uppercase;
-    text-shadow: 2px 2px 0 #000, 3px 3px 10px rgba(230, 0, 0, 0.6);
-    line-height: 0.95;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.logo-line {
+.logo-img {
+    height: 110px;
+    width: 110px;
+    object-fit: cover;
     display: block;
+    /* Ořízne obrázek do kruhu – 44% odřízne falešnou šachovnici po okrajích */
+    clip-path: circle(44% at 50% 50%);
+    transition: transform 0.2s ease;
 }
 
-.logo-line:nth-child(2) {
-    color: var(--yellow);
-    letter-spacing: 5px;      /* Mírně širší pro dorovnání šířky se slovem PÖDËL */
-    text-shadow: 1px 1px 0 var(--red), 2px 2px 8px rgba(255, 215, 0, 0.4);
+.logo-img-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    filter: drop-shadow(0 0 6px rgba(230, 0, 0, 0.7)); /* Červená záře přesně kopírující ořez */
+}
+
+.logo-img:hover {
+    transform: scale(1.08);
 }
 
 .logo-subtitle {
@@ -91,7 +101,7 @@ a {
     letter-spacing: 2px;
     text-transform: uppercase;
     color: #bbb;
-    margin-top: 5px;
+    margin-top: 4px;
     font-weight: 700;
     text-align: center;
 }

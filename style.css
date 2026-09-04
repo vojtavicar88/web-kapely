@@ -1,0 +1,660 @@
+/* ====== ZÁKLADNÍ NASTAVENÍ ====== */
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 100px; /* Výška fixní hlavičky + rezerva pro nadpis */
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto Mono', monospace;
+    background: linear-gradient(135deg, rgba(0,0,0,0.6) 0%, rgba(230, 0, 0, 0.15) 50%, rgba(0,0,0,0.7) 100%),
+                url('logo-bg.png') center/cover no-repeat fixed; /* Pozadí je fixní přes celý web */
+    color: #fff;
+    overflow-x: hidden;
+    margin-top: 0;
+}
+
+/* Barvy */
+:root {
+    --red: #e60000;
+    --yellow: #ffd700;
+    --dark: #0a0a0a;
+    --gray: #1a1a1a;
+}
+
+/* Odkazy */
+a {
+    color: var(--red);
+    text-decoration: none;
+    transition: 0.15s;
+}
+
+/* ====== HLAVIČKA ====== */
+.header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 16px 40px;
+    background: rgba(0, 0, 0, 0.35); /* Původní decentní propustnost */
+    backdrop-filter: blur(12px);
+    border-bottom: 2px solid var(--red);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    width: 100%;
+}
+
+/* Logo nalevo: PÖDËL nad VODY, širší a vzájemně vycentrované */
+.logo-big {
+    flex: 0 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;      /* Vycentruje PÖDËL, VODY i podtitul na společnou osu */
+    text-align: center;
+}
+
+.logo-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 38px;          /* O něco větší a výraznější */
+    font-weight: 900;
+    margin: 0;
+    color: var(--red);
+    letter-spacing: 4px;      /* Širší rozestup písmen */
+    text-transform: uppercase;
+    text-shadow: 2px 2px 0 #000, 3px 3px 10px rgba(230, 0, 0, 0.6);
+    line-height: 0.95;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.logo-line {
+    display: block;
+}
+
+.logo-line:nth-child(2) {
+    color: var(--yellow);
+    letter-spacing: 5px;      /* Mírně širší pro dorovnání šířky se slovem PÖDËL */
+    text-shadow: 1px 1px 0 var(--red), 2px 2px 8px rgba(255, 215, 0, 0.4);
+}
+
+.logo-subtitle {
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #bbb;
+    margin-top: 5px;
+    font-weight: 700;
+    text-align: center;
+}
+
+/* Navigace vycentrovaná přesně na střed celého záhlaví */
+.nav-punky {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.nav-punky ul {
+    list-style: none;
+    display: flex;
+    gap: 45px; /* Větší rozestupy mezi položkami */
+    margin: 0;
+    padding: 0;
+    align-items: center;
+}
+
+.nav-punky ul li a {
+    font-weight: 900;
+    font-size: 17px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: #fff;
+    position: relative;
+    display: block;
+    padding: 6px 0;
+    transition: all 0.2s;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+.nav-punky ul li a:hover {
+    color: var(--red);
+    text-shadow: 0 0 12px var(--red), 0 0 20px var(--red);
+    transform: skewX(-10deg);
+}
+
+/* ====== HERO SEKCE ====== */
+.hero {
+    height: 100vh;
+    background: transparent; /* Původní pozadí je teď na body */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    padding-top: 110px;
+}
+
+.hero-noise {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(
+        0deg,
+        rgba(255, 255, 255, 0.03) 0px,
+        rgba(255, 255, 255, 0.03) 1px,
+        transparent 1px,
+        transparent 2px
+    );
+    pointer-events: none;
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    animation: heroSlide 0.8s ease-out;
+}
+
+@keyframes heroSlide {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.punk-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 72px;
+    margin: 0;
+    color: var(--red);
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    line-height: 1.1;
+    text-shadow: 3px 3px 0 #000, 6px 6px 15px rgba(230, 0, 0, 0.6);
+    animation: punkTextSlide 1s ease-out;
+}
+
+@keyframes punkTextSlide {
+    from {
+        transform: skewX(10deg) scaleX(0.9);
+        opacity: 0;
+    }
+    to {
+        transform: skewX(0) scaleX(1);
+        opacity: 1;
+    }
+}
+
+.punk-title span {
+    display: block;
+}
+
+.punk-title .subtitle {
+    font-size: 42px;
+    margin-top: 10px;
+    color: var(--yellow);
+    text-shadow: 2px 2px 0 var(--red), 4px 4px 10px rgba(255, 215, 0, 0.4);
+}
+
+.punk-tagline {
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    margin: 20px 0 40px;
+    color: #ccc;
+    text-transform: uppercase;
+    word-spacing: 8px;
+}
+
+/* ====== TLAČÍTKA ====== */
+.btn {
+    display: inline-block;
+    padding: 14px 32px;
+    background: var(--red);
+    color: #000;
+    font-weight: 700;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 16px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    border: 2px solid #000;
+    transition: all 0.2s;
+    cursor: pointer;
+    margin: 10px;
+    position: relative;
+}
+
+.btn:hover {
+    background: var(--yellow);
+    transform: translate(-2px, -2px);
+    box-shadow: 4px 4px 0 #000, 0 0 20px var(--red);
+    color: #000;
+}
+
+.btn-skew {
+    transform: skewX(-10deg);
+}
+
+.btn-skew:hover {
+    transform: skewX(-10deg) translate(-2px, -2px);
+}
+
+/* ====== SEKCE (PŮVODNĚ ZCELA ČERNÉ) ====== */
+.section {
+    padding: 80px 40px;
+    background: rgba(0, 0, 0, 0.95); /* Krytí zvýšeno, propustnost snížena na polovinu */
+    border-top: 3px solid var(--red);
+    position: relative;
+}
+
+/* Liché sekce (O kapele, Koncerty, Kontakt) – méně propustné */
+.section-dark {
+    background: rgba(10, 10, 10, 0.72); /* Krytí zvýšeno, propustnost snížena na polovinu */
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.section-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 48px;
+    margin: 0 0 30px 0;
+    color: var(--red);
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    text-shadow: 2px 2px 8px rgba(230, 0, 0, 0.5);
+    transform: skewX(-5deg);
+    text-align: center;
+}
+
+/* Centrované sekce s kontejnerem */
+#kapela, #hudba, #merch, #kontakt {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#kapela .section-title,
+#hudba .section-title,
+#merch .section-title,
+#kontakt .section-title {
+    width: 100%;
+}
+
+.about-box {
+    background: linear-gradient(135deg, rgba(230, 0, 0, 0.05) 0%, transparent 100%);
+    border-left: 4px solid var(--red);
+    border-bottom: 2px solid var(--red);
+    padding: 25px 30px;
+    margin-bottom: 40px;
+    transform: skewX(-3deg);
+    font-size: 18px;
+    line-height: 1.6;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* ====== O KAPELE ====== */
+.members {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); /* 5 sloupců pro 5 členů */
+    gap: 15px;                             /* Mírně zmenšená mezera */
+    margin-top: 40px;
+    max-width: 1350px;                     /* Zvětšeno, aby se karty nemusely mačkat */
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.member {
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d0000 100%);
+    padding: 20px 15px;                    /* Kompaktnější vnitřní odsazení */
+    border-left: 4px solid var(--red);
+    border-top: 2px solid var(--yellow);
+    border-radius: 2px;
+    position: relative;
+    transform: rotate(-1deg);
+    transition: all 0.3s;
+}
+
+.member:nth-child(2n) {
+    transform: rotate(1deg);
+}
+
+.member:hover {
+    transform: rotate(0) translateY(-5px);
+    box-shadow: 0 10px 25px rgba(230, 0, 0, 0.3);
+}
+
+.member-label {
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--yellow);
+    margin-bottom: 8px;
+    font-weight: 700;
+}
+
+.member h3 {
+    font-size: 18px;
+    margin: 0 0 10px 0;
+    color: var(--red);
+    text-transform: uppercase;
+}
+
+/* ====== KDE NÁS NAJDETE ====== */
+.tracks {
+    margin: 40px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    max-width: 700px;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.track-link {
+    background: linear-gradient(90deg, rgba(230, 0, 0, 0.15) 0%, transparent 100%);
+    padding: 22px 28px;
+    border-left: 5px solid var(--red);
+    border-right: 2px solid var(--yellow);
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    transform: skewX(-3deg);
+    transition: all 0.25s ease;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.track-link:hover {
+    background: linear-gradient(90deg, rgba(230, 0, 0, 0.35) 0%, rgba(255, 215, 0, 0.15) 100%);
+    transform: skewX(-3deg) translateX(12px);
+    border-left-color: var(--yellow);
+    box-shadow: 0 8px 25px rgba(230, 0, 0, 0.3);
+}
+
+.track-number {
+    font-size: 24px;
+    font-weight: 900;
+    color: var(--red);
+    min-width: 40px;
+    font-family: 'Bebas Neue', sans-serif;
+}
+
+.track-name {
+    font-weight: 900;
+    font-size: 20px;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.track-meta {
+    color: var(--yellow);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin-left: auto; /* Posune šipku a doplňkový text doprava */
+}
+
+/* ====== KONCERTY ====== */
+.concert-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 40px 0;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+}
+
+.concert-list li {
+    background: linear-gradient(90deg, rgba(230, 0, 0, 0.15) 0%, transparent 100%);
+    padding: 30px;
+    margin-bottom: 15px;
+    border-left: 6px solid var(--red);
+    border-bottom: 2px solid var(--yellow);
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 40px;
+    transform: skewX(-2deg);
+    transition: all 0.3s;
+}
+
+.concert-list li:hover {
+    transform: skewX(-2deg) translateX(8px);
+    box-shadow: 0 8px 20px rgba(230, 0, 0, 0.2);
+}
+
+.date {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 32px;
+    color: var(--red);
+    font-weight: 900;
+    text-transform: uppercase;
+}
+
+.venue {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--yellow);
+    text-transform: uppercase;
+    margin-bottom: 5px;
+}
+
+.city {
+    color: #aaa;
+    font-size: 14px;
+    letter-spacing: 1px;
+}
+
+/* ====== MERCH ====== */
+.merch-items {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    margin-bottom: 40px;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+}
+
+.item {
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d0000 100%);
+    padding: 30px;
+    border-left: 4px solid var(--red);
+    border-top: 2px solid var(--yellow);
+    font-weight: 700;
+    font-size: 16px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s;
+    transform: rotate(-1deg);
+}
+
+.item:nth-child(2n) {
+    transform: rotate(1deg);
+}
+
+.item:hover {
+    transform: rotate(0) scale(1.05);
+    box-shadow: 0 10px 25px rgba(230, 0, 0, 0.4);
+    background: linear-gradient(135deg, #2d2d2d 0%, #4d0000 100%);
+}
+
+.item-icon {
+    font-size: 32px;
+    display: block;
+    margin-bottom: 10px;
+}
+
+/* ====== KONTAKT ====== */
+.contact-box {
+    background: linear-gradient(135deg, rgba(230, 0, 0, 0.1) 0%, transparent 100%);
+    border-left: 4px solid var(--red);
+    border-bottom: 2px solid var(--yellow);
+    padding: 40px;
+    transform: skewX(-3deg);
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.contact-question {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--yellow);
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.contact-info {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+.info-item {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.label {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #aaa;
+    margin-bottom: 8px;
+}
+
+.value {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--red);
+    font-family: 'Roboto Mono', monospace;
+}
+
+.socials {
+    display: flex;
+    gap: 20px;
+    margin-top: 30px;
+    justify-content: center;
+}
+
+.social-link {
+    display: inline-block;
+    padding: 10px 18px;
+    background: var(--red);
+    color: #000;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 12px;
+    transition: all 0.2s;
+}
+
+.social-link:hover {
+    background: var(--yellow);
+    transform: scale(1.1) rotate(-5deg);
+}
+
+.footer {
+    text-align: center;
+    padding: 30px 40px;
+    background: #000;
+    border-top: 3px solid var(--red);
+    color: #666;
+    font-size: 12px;
+    letter-spacing: 1px;
+}
+
+/* ====== RESPONSIVE ====== */
+@media (max-width: 1024px) {
+    .header {
+        flex-direction: column;
+        justify-content: center;
+        padding: 15px 20px;
+        gap: 12px;
+    }
+
+    .logo-big {
+        align-items: center;
+        text-align: center;
+    }
+
+    .nav-punky {
+        position: static;
+        transform: none;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .nav-punky ul {
+        gap: 20px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .hero {
+        padding-top: 150px;
+    }
+}
+
+@media (max-width: 768px) {
+    .nav-punky ul {
+        gap: 12px;
+    }
+
+    .nav-punky ul li a {
+        font-size: 13px;
+        letter-spacing: 1px;
+        padding: 4px 0;
+    }
+
+    .hero {
+        padding-top: 160px;
+    }
+
+    .members {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .merch-items {
+        grid-template-columns: 1fr;
+    }
+    
+    .concert-list li {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    .contact-info {
+        grid-template-columns: 1fr;
+    }
+    
+    .punk-title {
+        font-size: 48px;
+    }
+}

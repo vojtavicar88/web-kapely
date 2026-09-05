@@ -265,6 +265,21 @@ a {
     transform: skewX(-10deg) translate(-2px, -2px);
 }
 
+/* Tlačítko Historie kapely */
+.history-button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+    padding-top: 40px;
+    border-top: 1px solid rgba(230, 0, 0, 0.3);
+}
+
+.btn-history {
+    font-size: 18px;
+    padding: 16px 40px;
+    letter-spacing: 3px;
+}
+
 /* ====== SEKCE (PŮVODNĚ ZCELA ČERNÉ) ====== */
 .section {
     padding: 80px 40px;
@@ -602,9 +617,7 @@ a {
 /* ====== GALERIE STRÁNKA ====== */
 .gallery-hero {
     height: 60vh;
-    background: linear-gradient(135deg, rgba(0,0,0,0.5) 0%, rgba(230, 0, 0, 0.15) 50%, rgba(0,0,0,0.6) 100%),
-                url('logo-bg.png') center/cover no-repeat;
-    background-attachment: fixed;
+    background: linear-gradient(135deg, rgba(0,0,0,0.8) 0%, rgba(230, 0, 0, 0.15) 50%, rgba(0,0,0,0.85) 100%);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -802,6 +815,96 @@ a {
     }
 }
 
+/* ====== HISTORIE STRÁNKA ====== */
+.history-hero {
+    height: 60vh;
+    background: linear-gradient(135deg, rgba(0,0,0,0.8) 0%, rgba(230, 0, 0, 0.15) 50%, rgba(0,0,0,0.85) 100%),
+                url('logo-bg.png') center/cover no-repeat;
+    background-attachment: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    padding-top: 110px;
+}
+
+.history-hero-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 72px;
+    margin: 0;
+    color: var(--red);
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    line-height: 1.1;
+    text-shadow: 3px 3px 0 #000, 6px 6px 15px rgba(230, 0, 0, 0.6);
+    animation: punkTextSlide 1s ease-out;
+}
+
+.history-hero-title span {
+    display: block;
+}
+
+.history-hero-title .subtitle {
+    font-size: 42px;
+    margin-top: 10px;
+    color: var(--yellow);
+    text-shadow: 2px 2px 0 var(--red), 4px 4px 10px rgba(255, 215, 0, 0.4);
+}
+
+/* Historie obsah */
+.history-content {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.history-period {
+    background: linear-gradient(135deg, rgba(230, 0, 0, 0.08) 0%, transparent 100%);
+    border-left: 4px solid var(--red);
+    border-bottom: 2px solid var(--yellow);
+    padding: 30px;
+    margin-bottom: 25px;
+    transform: skewX(-2deg);
+    transition: all 0.3s ease;
+}
+
+.history-period:hover {
+    transform: skewX(-2deg) translateX(5px);
+    box-shadow: 0 5px 15px rgba(230, 0, 0, 0.2);
+}
+
+.period-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 24px;
+    color: var(--yellow);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin: 0 0 15px 0;
+}
+
+.history-period p {
+    font-size: 16px;
+    line-height: 1.8;
+    color: #ddd;
+    margin: 0;
+}
+
+.history-period strong {
+    color: var(--red);
+    font-weight: 700;
+}
+
+/* Historie links */
+.history-links {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
 @media (max-width: 768px) {
     .nav-punky ul {
         gap: 12px;
@@ -843,16 +946,22 @@ a {
         gap: 15px;
     }
 
-    .gallery-overlay p {
-        font-size: 20px;
-    }
-
-    .gallery-hero-title {
+    .history-hero-title {
         font-size: 48px;
     }
 
-    .gallery-hero-title .subtitle {
+    .history-hero-title .subtitle {
         font-size: 32px;
+    }
+
+    .history-links {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .history-links .btn {
+        width: 100%;
+        text-align: center;
     }
 
     .video-wrapper {
@@ -881,3 +990,4 @@ a {
     .gallery-hero-title .subtitle {
         font-size: 24px;
     }
+}

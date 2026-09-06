@@ -383,27 +383,99 @@ a {
     text-transform: uppercase;
 }
 
-/* ====== KDE NÁS NAJDETE ====== */
-.tracks {
-    margin: 40px 0;
+/* ====== HUDBA (VYROVNANÉ DVOU-SLOUPOVÉ ROZLOŽENÍ) ====== */
+.music-two-cols {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 120px;            /* Výrazný odstup obou bloků od středu */
+    max-width: 1400px;     /* Využije šířku stránky */
+    width: 90%;
+    margin: 50px auto 0;
+    align-items: stretch;  /* Zaručí naprosto stejnou výšku obou boxů */
+}
+
+/* Sjednocený styl obou boxů (stejné ohraničení, zkosení i pozadí) */
+.tracklist-box,
+.online-box {
+    background: rgba(10, 10, 10, 0.65);
+    border-left: 4px solid var(--red);
+    border-bottom: 2px solid var(--yellow);
+    padding: 30px;
+    transform: skewX(-2deg);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
     display: flex;
     flex-direction: column;
-    gap: 16px;
-    max-width: 700px;
+}
+
+/* Sjednocené nadpisy */
+.tracklist-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px;
+    color: var(--yellow);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin: 0 0 25px 0;
+    text-align: center;
+}
+
+/* Pravý sloupec s časem skladby */
+.songs-table td:last-child {
+    width: 65px;
+    text-align: right;
+    color: var(--yellow);
+    font-size: 12px;
+    letter-spacing: 1px;
+    border-left: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.songs-table td {
+    padding: 6px 14px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    color: #eee;
+}
+
+.songs-table tr:last-child td {
+    border-bottom: none;
+}
+
+.songs-table tr:nth-child(even) {
+    background: rgba(255, 255, 255, 0.04);
+}
+
+.songs-table tr:hover {
+    background: rgba(230, 0, 0, 0.25);
+    color: #fff;
+}
+
+.songs-table td:first-child {
+    width: 45px;
+    font-weight: 700;
+    color: var(--red);
+    border-right: 1px solid rgba(255, 255, 255, 0.2);
+    text-align: center;
+}
+
+/* Odkazy online (pravá strana) – rovnoměrné roztažení */
+.online-box .tracks {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around; /* Rozmístí 3 tlačítka rovnoměrně na výšku */
+    flex: 1;                       /* Vyplní celý prostor boxu */
+    gap: 20px;
     width: 100%;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 0;
 }
 
 .track-link {
     background: linear-gradient(90deg, rgba(230, 0, 0, 0.15) 0%, transparent 100%);
-    padding: 22px 28px;
+    padding: 24px 28px;
     border-left: 5px solid var(--red);
     border-right: 2px solid var(--yellow);
     display: flex;
     align-items: center;
-    gap: 24px;
-    transform: skewX(-3deg);
+    gap: 20px;
+    transform: skewX(-1deg);
     transition: all 0.25s ease;
     cursor: pointer;
     text-decoration: none;
@@ -411,22 +483,14 @@ a {
 
 .track-link:hover {
     background: linear-gradient(90deg, rgba(230, 0, 0, 0.35) 0%, rgba(255, 215, 0, 0.15) 100%);
-    transform: skewX(-3deg) translateX(12px);
+    transform: skewX(-1deg) translateX(10px);
     border-left-color: var(--yellow);
     box-shadow: 0 8px 25px rgba(230, 0, 0, 0.3);
 }
 
-.track-number {
-    font-size: 24px;
-    font-weight: 900;
-    color: var(--red);
-    min-width: 40px;
-    font-family: 'Bebas Neue', sans-serif;
-}
-
 .track-name {
     font-weight: 900;
-    font-size: 20px;
+    font-size: 22px;
     color: #fff;
     text-transform: uppercase;
     letter-spacing: 2px;
@@ -437,7 +501,36 @@ a {
     font-size: 13px;
     font-weight: 700;
     letter-spacing: 1px;
-    margin-left: auto; /* Posune šipku a doplňkový text doprava */
+    margin-left: auto;
+}
+
+.platform-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 36px;
+    height: 36px;
+    transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.platform-icon svg {
+    display: block;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5));
+}
+
+.track-link:hover .platform-icon {
+    transform: scale(1.15);
+    filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.4));
+}
+
+/* Sem přidej styl pro obrázkovou ikonu */
+.platform-img {
+    width: 34px;
+    height: 34px;
+    object-fit: cover;
+    border-radius: 50%;
+    display: block;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
 }
 
 /* ====== KONCERTY ====== */
@@ -614,10 +707,11 @@ a {
     letter-spacing: 1px;
 }
 
-/* ====== GALERIE STRÁNKA ====== */
-.gallery-hero {
+/* ====== SPOLEČNÉ HERO PRO PODSTRÁNKY (STEJNÉ JAKO INDEX) ====== */
+.gallery-hero,
+.history-hero {
     height: 60vh;
-    background: linear-gradient(135deg, rgba(0,0,0,0.8) 0%, rgba(230, 0, 0, 0.15) 50%, rgba(0,0,0,0.85) 100%);
+    min-height: 480px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -625,9 +719,39 @@ a {
     position: relative;
     overflow: hidden;
     padding-top: 110px;
+    padding-bottom: 0;
+    background: transparent !important;
+    border-bottom: 2px solid var(--red);
 }
 
-.gallery-hero-title {
+.gallery-hero .hero-noise,
+.history-hero .hero-noise {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(
+        0deg,
+        rgba(255, 255, 255, 0.03) 0px,
+        rgba(255, 255, 255, 0.03) 1px,
+        transparent 1px,
+        transparent 2px
+    );
+    pointer-events: none;
+    z-index: 1;
+}
+
+.gallery-hero .hero-content,
+.history-hero .hero-content {
+    position: relative;
+    z-index: 2;
+    animation: heroSlide 0.8s ease-out;
+}
+
+/* ====== SROVNÁNÍ VELIKOSTÍ A FONTŮ ====== */
+.gallery-hero-title,
+.history-hero-title {
     font-family: 'Bebas Neue', sans-serif;
     font-size: 72px;
     margin: 0;
@@ -639,11 +763,14 @@ a {
     animation: punkTextSlide 1s ease-out;
 }
 
-.gallery-hero-title span {
+.gallery-hero-title span,
+.history-hero-title span {
     display: block;
 }
 
-.gallery-hero-title .subtitle {
+.gallery-hero-title .subtitle,
+.history-hero-title .subtitle {
+    font-family: 'Bebas Neue', sans-serif;
     font-size: 42px;
     margin-top: 10px;
     color: var(--yellow);
@@ -783,6 +910,7 @@ a {
 .gallery-info strong {
     color: var(--red);
 }
+/* ====== RESPONZIVITA ====== */
 @media (max-width: 1024px) {
     .header {
         flex-direction: column;
@@ -812,6 +940,119 @@ a {
 
     .hero {
         padding-top: 150px;
+    }
+
+    .music-two-cols {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .nav-punky ul {
+        gap: 12px;
+    }
+
+    .nav-punky ul li a {
+        font-size: 13px;
+        letter-spacing: 1px;
+        padding: 4px 0;
+    }
+
+    .hero {
+        padding-top: 160px;
+    }
+
+    .gallery-hero,
+    .history-hero {
+        padding-top: 150px;
+        min-height: 40vh;
+    }
+
+    .members {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .merch-items {
+        grid-template-columns: 1fr;
+    }
+    
+    .concert-list li {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    .contact-info {
+        grid-template-columns: 1fr;
+    }
+    
+    .punk-title,
+    .gallery-hero-title,
+    .history-hero-title {
+        font-size: 46px;
+    }
+
+    .gallery-hero-title .subtitle,
+    .history-hero-title .subtitle {
+        font-size: 28px;
+    }
+
+    .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+    }
+
+    .history-lineup-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .gig-row {
+        grid-template-columns: 1fr;
+        gap: 4px;
+    }
+
+    .gig-place {
+        text-align: left;
+    }
+
+    .history-links {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .history-links .btn {
+        width: 100%;
+        text-align: center;
+    }
+
+    .video-wrapper {
+        padding-bottom: 75%;
+    }
+}
+
+@media (max-width: 480px) {
+    .gallery-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .gallery-item {
+        transform: rotate(0deg);
+    }
+
+    .video-wrapper {
+        padding-bottom: 100%;
+    }
+
+    .gallery-hero-title,
+    .history-hero-title {
+        font-size: 36px;
+    }
+
+    .gallery-hero-title .subtitle,
+    .history-hero-title .subtitle {
+        font-size: 22px;
     }
 }
 
@@ -905,6 +1146,173 @@ a {
     margin: 0 auto;
 }
 
+/* ====== ROZŠÍŘENÉ STYLOVÁNÍ PRO HISTORII ====== */
+.history-intro {
+    font-size: 17px;
+    line-height: 1.85;
+    background: rgba(12, 12, 12, 0.88);
+    border-left: 5px solid var(--red);
+    border-bottom: 2px solid var(--yellow);
+    color: #eee; /* Odstraní slitou červenou a zajistí čistou čitelnost */
+}
+
+.history-intro strong {
+    color: var(--yellow);
+}
+
+.history-period {
+    background: rgba(12, 12, 12, 0.82); /* Tmavší podklad kryjící logo na pozadí */
+    border-left: 4px solid var(--red);
+    border-bottom: 2px solid var(--yellow);
+    padding: 30px;
+    margin-bottom: 30px;
+    transform: skewX(-2deg);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+
+.history-period p:last-child {
+    margin-bottom: 0;
+}
+
+.history-period em {
+    color: var(--yellow);
+    font-style: normal;
+    font-weight: 700;
+}
+
+/* Sestavy ve dvou sloupcích */
+.history-lineup-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+    margin-bottom: 25px;
+}
+
+.lineup-card {
+    margin-bottom: 0;
+}
+
+.lineup-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.lineup-list li {
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 14px;
+    display: flex;
+    flex-direction: column;
+}
+
+.lineup-list li strong {
+    color: #fff;
+    font-size: 15px;
+}
+
+.lineup-list li span {
+    color: var(--yellow);
+    font-size: 13px;
+}
+
+/* Časová tabulka sestav */
+.eras-table {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.era-row {
+    padding: 8px 12px;
+    background: rgba(255, 255, 255, 0.03);
+    border-left: 2px solid var(--yellow);
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.era-badge {
+    background: var(--red);
+    color: #000;
+    font-weight: 900;
+    font-size: 12px;
+    padding: 3px 8px;
+    letter-spacing: 1px;
+}
+
+.era-band {
+    color: var(--yellow);
+}
+
+/* Archiv koncertů */
+.concert-subheading {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px;
+    color: var(--red);
+    letter-spacing: 2px;
+    margin: 25px 0 10px 0;
+    text-transform: uppercase;
+}
+
+.gig-archive-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+.gig-row {
+    display: grid;
+    grid-template-columns: 120px 1.5fr 1fr;
+    gap: 15px;
+    padding: 8px 12px;
+    background: rgba(0, 0, 0, 0.4);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    font-size: 14px;
+    align-items: center;
+}
+
+.gig-row:nth-child(even) {
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.gig-date {
+    color: var(--red);
+    font-weight: 700;
+    font-family: 'Roboto Mono', monospace;
+}
+
+.gig-name {
+    color: #fff;
+    font-weight: 700;
+}
+
+.gig-place {
+    color: var(--yellow);
+    text-align: right;
+}
+
+/* Mobilní responzivita */
+@media (max-width: 768px) {
+    .history-lineup-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .gig-row {
+        grid-template-columns: 1fr;
+        gap: 4px;
+    }
+
+    .gig-place {
+        text-align: left;
+    }
+}
+
 @media (max-width: 768px) {
     .nav-punky ul {
         gap: 12px;
@@ -967,6 +1375,16 @@ a {
     .video-wrapper {
         padding-bottom: 75%;
     }
+
+    .music-two-cols {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 90px;             /* Zvětšeno z původních 40px – odtlačí sloupce od sebe */
+    max-width: 1350px;     /* Zvětšeno z 1200px – sekce využijí více prostoru */
+    width: 92%;            /* Využití šířky stránky */
+    margin: 40px auto 0;
+    align-items: start;
+}
 }
 
 @media (max-width: 480px) {

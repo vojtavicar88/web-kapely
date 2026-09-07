@@ -910,214 +910,42 @@ a {
 .gallery-info strong {
     color: var(--red);
 }
-/* ====== RESPONZIVITA ====== */
-@media (max-width: 1024px) {
-    .header {
-        flex-direction: column;
-        justify-content: center;
-        padding: 15px 20px;
-        gap: 12px;
-    }
+/* ====== SPOLEČNÁ RESPONZIVITA ====== */
 
-    .logo-big {
-        align-items: center;
-        text-align: center;
-    }
-
-    .nav-punky {
-        position: static;
-        transform: none;
-        width: 100%;
-        display: flex;
-        justify-content: center;
-    }
-
-    .nav-punky ul {
-        gap: 20px;
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-
-    .hero {
-        padding-top: 150px;
-    }
-
-    .music-two-cols {
-        grid-template-columns: 1fr;
-        gap: 40px;
-        width: 100%;
-    }
-}
-
-@media (max-width: 768px) {
-    .nav-punky ul {
-        gap: 12px;
-    }
-
-    .nav-punky ul li a {
-        font-size: 13px;
-        letter-spacing: 1px;
-        padding: 4px 0;
-    }
-
-    .hero {
-        padding-top: 160px;
-    }
-
-    .gallery-hero,
-    .history-hero {
-        padding-top: 150px;
-        min-height: 40vh;
-    }
-
-    .members {
-        grid-template-columns: repeat(2, 1fr);
-    }
-    
-    .merch-items {
-        grid-template-columns: 1fr;
-    }
-    
-    .concert-list li {
-        grid-template-columns: 1fr;
-        gap: 15px;
-    }
-    
-    .contact-info {
-        grid-template-columns: 1fr;
-    }
-    
-    .punk-title,
-    .gallery-hero-title,
-    .history-hero-title {
-        font-size: 46px;
-    }
-
-    .gallery-hero-title .subtitle,
-    .history-hero-title .subtitle {
-        font-size: 28px;
-    }
-
-    .gallery-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 15px;
-    }
-
-    .history-lineup-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .gig-row {
-        grid-template-columns: 1fr;
-        gap: 4px;
-    }
-
-    .gig-place {
-        text-align: left;
-    }
-
-    .history-links {
-        flex-direction: column;
-        gap: 15px;
-    }
-
-    .history-links .btn {
-        width: 100%;
-        text-align: center;
-    }
-
-    .video-wrapper {
-        padding-bottom: 75%;
-    }
-}
-
-@media (max-width: 480px) {
-    .gallery-grid {
-        grid-template-columns: 1fr;
-        gap: 12px;
-    }
-
-    .gallery-item {
-        transform: rotate(0deg);
-    }
-
-    .video-wrapper {
-        padding-bottom: 100%;
-    }
-
-    .gallery-hero-title,
-    .history-hero-title {
-        font-size: 36px;
-    }
-
-    .gallery-hero-title .subtitle,
-    .history-hero-title .subtitle {
-        font-size: 22px;
-    }
-}
-
-/* ====== HISTORIE STRÁNKA ====== */
-.history-hero {
-    height: 60vh;
-    background: linear-gradient(135deg, rgba(0,0,0,0.8) 0%, rgba(230, 0, 0, 0.15) 50%, rgba(0,0,0,0.85) 100%),
-                url('logo-bg.png') center/cover no-repeat;
-    background-attachment: fixed;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-    padding-top: 110px;
-}
-
-.history-hero-title {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 72px;
-    margin: 0;
-    color: var(--red);
-    text-transform: uppercase;
-    letter-spacing: 4px;
-    line-height: 1.1;
-    text-shadow: 3px 3px 0 #000, 6px 6px 15px rgba(230, 0, 0, 0.6);
-    animation: punkTextSlide 1s ease-out;
-}
-
-.history-hero-title span {
-    display: block;
-}
-
-.history-hero-title .subtitle {
-    font-size: 42px;
-    margin-top: 10px;
-    color: var(--yellow);
-    text-shadow: 2px 2px 0 var(--red), 4px 4px 10px rgba(255, 215, 0, 0.4);
-}
-
-/* Historie obsah */
+/* ====== ROZŠÍŘENÉ STYLOVÁNÍ PRO HISTORII ====== */
 .history-content {
     max-width: 1000px;
     margin: 0 auto;
 }
 
+.history-intro {
+    font-size: 17px;
+    line-height: 1.85;
+    background: rgba(12, 12, 12, 0.92);
+    border-left: 5px solid var(--red);
+    border-bottom: 2px solid var(--yellow);
+    color: #eee;
+}
+
+.history-intro strong {
+    color: var(--yellow);
+}
+
 .history-period {
-    background: linear-gradient(135deg, rgba(230, 0, 0, 0.08) 0%, transparent 100%);
+    background: rgba(10, 10, 10, 0.88); /* Tmavý podklad zabraňující prosvítání */
     border-left: 4px solid var(--red);
     border-bottom: 2px solid var(--yellow);
     padding: 30px;
-    margin-bottom: 25px;
+    margin-bottom: 30px;
     transform: skewX(-2deg);
-    transition: all 0.3s ease;
-}
-
-.history-period:hover {
-    transform: skewX(-2deg) translateX(5px);
-    box-shadow: 0 5px 15px rgba(230, 0, 0, 0.2);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
 }
 
 .period-title {
     font-family: 'Bebas Neue', sans-serif;
-    font-size: 24px;
+    font-size: 26px;
     color: var(--yellow);
     text-transform: uppercase;
     letter-spacing: 2px;
@@ -1127,52 +955,17 @@ a {
 .history-period p {
     font-size: 16px;
     line-height: 1.8;
-    color: #ddd;
-    margin: 0;
+    color: #e5e5e5;
+    margin: 0 0 16px 0;
+}
+
+.history-period p:last-child {
+    margin-bottom: 0;
 }
 
 .history-period strong {
     color: var(--red);
     font-weight: 700;
-}
-
-/* Historie links */
-.history-links {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    flex-wrap: wrap;
-    max-width: 900px;
-    margin: 0 auto;
-}
-
-/* ====== ROZŠÍŘENÉ STYLOVÁNÍ PRO HISTORII ====== */
-.history-intro {
-    font-size: 17px;
-    line-height: 1.85;
-    background: rgba(12, 12, 12, 0.88);
-    border-left: 5px solid var(--red);
-    border-bottom: 2px solid var(--yellow);
-    color: #eee; /* Odstraní slitou červenou a zajistí čistou čitelnost */
-}
-
-.history-intro strong {
-    color: var(--yellow);
-}
-
-.history-period {
-    background: rgba(12, 12, 12, 0.82); /* Tmavší podklad kryjící logo na pozadí */
-    border-left: 4px solid var(--red);
-    border-bottom: 2px solid var(--yellow);
-    padding: 30px;
-    margin-bottom: 30px;
-    transform: skewX(-2deg);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-}
-
-.history-period p:last-child {
-    margin-bottom: 0;
 }
 
 .history-period em {
@@ -1297,69 +1090,210 @@ a {
     text-align: right;
 }
 
-/* Mobilní responzivita */
+/* Odkazy pod historií */
+.history-links {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* Tablety a menší laptopy (do 1024px) */
+@media (max-width: 1024px) {
+    .header {
+        position: relative;
+        flex-direction: column;
+        justify-content: center;
+        padding: 12px 15px;
+        gap: 10px;
+    }
+
+    html {
+        scroll-padding-top: 0;
+    }
+
+    .logo-big {
+        align-items: center;
+        text-align: center;
+    }
+
+    .logo-img {
+        height: 80px;
+        width: 80px;
+    }
+
+    .nav-punky {
+        position: static;
+        transform: none;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .nav-punky ul {
+        gap: 15px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .hero,
+    .gallery-hero,
+    .history-hero {
+        padding-top: 40px;
+        min-height: auto;
+        height: auto;
+        padding-bottom: 60px;
+    }
+
+    .music-two-cols {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        width: 100%;
+    }
+}
+
+/* Běžné chytré telefony (do 768px) */
 @media (max-width: 768px) {
+    .section {
+        padding: 50px 15px;
+    }
+
+    .section-title {
+        font-size: 36px;
+    }
+
+    /* Typografie v Hero sekcích */
+    .punk-title,
+    .gallery-hero-title,
+    .history-hero-title {
+        font-size: 44px;
+        letter-spacing: 2px;
+    }
+
+    .punk-title .subtitle,
+    .gallery-hero-title .subtitle,
+    .history-hero-title .subtitle {
+        font-size: 26px;
+    }
+
+    .punk-tagline {
+        font-size: 15px;
+        letter-spacing: 1.5px;
+        margin: 15px 0 25px;
+        word-spacing: 4px;
+    }
+
+    .hero-buttons {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+
+    .btn {
+        width: 85%;
+        max-width: 320px;
+        margin: 6px auto;
+        text-align: center;
+    }
+
+    /* Členové kapely – 1 sloupec */
+    .members {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .member {
+        transform: none !important;
+    }
+
+    /* Sekce Hudba */
+    .tracklist-box,
+    .online-box {
+        padding: 20px 15px;
+        transform: none;
+    }
+
+    .songs-table td {
+        padding: 6px 8px;
+        font-size: 12px;
+    }
+
+    .track-link {
+        padding: 16px 18px;
+        gap: 14px;
+        transform: none;
+    }
+
+    .track-name {
+        font-size: 18px;
+    }
+
+    .track-meta {
+        font-size: 11px;
+    }
+
+    /* Koncerty a kontakty */
+    .concert-list li {
+        grid-template-columns: 1fr;
+        gap: 10px;
+        padding: 20px;
+        transform: none;
+    }
+
+    .merch-items {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-info {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .contact-box {
+        padding: 25px 15px;
+        transform: none;
+    }
+
+    /* Galerie a video */
+    .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+
+    .gallery-item {
+        transform: none !important;
+    }
+
+    .video-container {
+        padding: 12px;
+        transform: none;
+    }
+
+    .video-wrapper {
+        padding-bottom: 56.25%;
+    }
+
+    /* Historie */
+    .history-period {
+        padding: 20px 15px;
+        transform: none;
+    }
+
     .history-lineup-grid {
         grid-template-columns: 1fr;
     }
-    
+
     .gig-row {
         grid-template-columns: 1fr;
         gap: 4px;
+        padding: 10px;
     }
 
     .gig-place {
         text-align: left;
-    }
-}
-
-@media (max-width: 768px) {
-    .nav-punky ul {
-        gap: 12px;
-    }
-
-    .nav-punky ul li a {
-        font-size: 13px;
-        letter-spacing: 1px;
-        padding: 4px 0;
-    }
-
-    .hero {
-        padding-top: 160px;
-    }
-
-    .members {
-        grid-template-columns: repeat(2, 1fr);
-    }
-    
-    .merch-items {
-        grid-template-columns: 1fr;
-    }
-    
-    .concert-list li {
-        grid-template-columns: 1fr;
-        gap: 15px;
-    }
-    
-    .contact-info {
-        grid-template-columns: 1fr;
-    }
-    
-    .punk-title {
-        font-size: 48px;
-    }
-
-    .gallery-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 15px;
-    }
-
-    .history-hero-title {
-        font-size: 48px;
-    }
-
-    .history-hero-title .subtitle {
-        font-size: 32px;
     }
 
     .history-links {
@@ -1371,41 +1305,40 @@ a {
         width: 100%;
         text-align: center;
     }
+}
 
-    .video-wrapper {
-        padding-bottom: 75%;
+/* Malé telefony (do 480px) */
+@media (max-width: 480px) {
+    .nav-punky ul {
+        gap: 8px 14px;
     }
 
-    .music-two-cols {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 90px;             /* Zvětšeno z původních 40px – odtlačí sloupce od sebe */
-    max-width: 1350px;     /* Zvětšeno z 1200px – sekce využijí více prostoru */
-    width: 92%;            /* Využití šířky stránky */
-    margin: 40px auto 0;
-    align-items: start;
-}
-}
+    .nav-punky ul li a {
+        font-size: 13px;
+        letter-spacing: 1px;
+    }
 
-@media (max-width: 480px) {
+    .punk-title,
+    .gallery-hero-title,
+    .history-hero-title {
+        font-size: 34px;
+    }
+
+    .punk-title .subtitle,
+    .gallery-hero-title .subtitle,
+    .history-hero-title .subtitle {
+        font-size: 20px;
+    }
+
     .gallery-grid {
         grid-template-columns: 1fr;
-        gap: 12px;
     }
 
-    .gallery-item {
-        transform: rotate(0deg);
+    .songs-table td:first-child {
+        width: 32px;
     }
 
-    .video-wrapper {
-        padding-bottom: 100%;
-    }
-
-    .gallery-hero-title {
-        font-size: 36px;
-    }
-
-    .gallery-hero-title .subtitle {
-        font-size: 24px;
+    .songs-table td:last-child {
+        width: 50px;
     }
 }

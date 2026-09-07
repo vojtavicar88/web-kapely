@@ -6,7 +6,8 @@
 html {
     scroll-behavior: smooth;
     scroll-padding-top: 85px; /* Upraveno pro nižší hlavičku */
-    background-color: #000;
+    background-color: #0a0a0a !important;
+    min-height: 100%;
 }
 
 body {
@@ -20,6 +21,8 @@ body {
     margin-top: 0;
     padding-left: env(safe-area-inset-left);
     padding-right: env(safe-area-inset-right);
+    background-color: #0a0a0a !important;
+    min-height: 100%;
 }
 
 /* Barvy */
@@ -913,250 +916,73 @@ a {
 .gallery-info strong {
     color: var(--red);
 }
-/* ====== SPOLEČNÁ RESPONZIVITA ====== */
+/* ====== RESPONZIVITA (TABLETY, IPADY, MOBILY) ====== */
 
-/* ====== ROZŠÍŘENÉ STYLOVÁNÍ PRO HISTORII ====== */
-.history-content {
-    max-width: 1000px;
-    margin: 0 auto;
-}
-
-.history-intro {
-    font-size: 17px;
-    line-height: 1.85;
-    background: rgba(12, 12, 12, 0.92);
-    border-left: 5px solid var(--red);
-    border-bottom: 2px solid var(--yellow);
-    color: #eee;
-}
-
-.history-intro strong {
-    color: var(--yellow);
-}
-
-.history-period {
-    background: rgba(10, 10, 10, 0.88); /* Tmavý podklad zabraňující prosvítání */
-    border-left: 4px solid var(--red);
-    border-bottom: 2px solid var(--yellow);
-    padding: 30px;
-    margin-bottom: 30px;
-    transform: skewX(-2deg);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
-}
-
-.period-title {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 26px;
-    color: var(--yellow);
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    margin: 0 0 15px 0;
-}
-
-.history-period p {
-    font-size: 16px;
-    line-height: 1.8;
-    color: #e5e5e5;
-    margin: 0 0 16px 0;
-}
-
-.history-period p:last-child {
-    margin-bottom: 0;
-}
-
-.history-period strong {
-    color: var(--red);
-    font-weight: 700;
-}
-
-.history-period em {
-    color: var(--yellow);
-    font-style: normal;
-    font-weight: 700;
-}
-
-/* Sestavy ve dvou sloupcích */
-.history-lineup-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 25px;
-    margin-bottom: 25px;
-}
-
-.lineup-card {
-    margin-bottom: 0;
-}
-
-.lineup-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.lineup-list li {
-    padding: 8px 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    font-size: 14px;
-    display: flex;
-    flex-direction: column;
-}
-
-.lineup-list li strong {
-    color: #fff;
-    font-size: 15px;
-}
-
-.lineup-list li span {
-    color: var(--yellow);
-    font-size: 13px;
-}
-
-/* Časová tabulka sestav */
-.eras-table {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin-top: 15px;
-}
-
-.era-row {
-    padding: 8px 12px;
-    background: rgba(255, 255, 255, 0.03);
-    border-left: 2px solid var(--yellow);
-    font-size: 14px;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    flex-wrap: wrap;
-}
-
-.era-badge {
-    background: var(--red);
-    color: #000;
-    font-weight: 900;
-    font-size: 12px;
-    padding: 3px 8px;
-    letter-spacing: 1px;
-}
-
-.era-band {
-    color: var(--yellow);
-}
-
-/* Archiv koncertů */
-.concert-subheading {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 22px;
-    color: var(--red);
-    letter-spacing: 2px;
-    margin: 25px 0 10px 0;
-    text-transform: uppercase;
-}
-
-.gig-archive-list {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    margin-bottom: 20px;
-}
-
-.gig-row {
-    display: grid;
-    grid-template-columns: 120px 1.5fr 1fr;
-    gap: 15px;
-    padding: 8px 12px;
-    background: rgba(0, 0, 0, 0.4);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-    font-size: 14px;
-    align-items: center;
-}
-
-.gig-row:nth-child(even) {
-    background: rgba(255, 255, 255, 0.03);
-}
-
-.gig-date {
-    color: var(--red);
-    font-weight: 700;
-    font-family: 'Roboto Mono', monospace;
-}
-
-.gig-name {
-    color: #fff;
-    font-weight: 700;
-}
-
-.gig-place {
-    color: var(--yellow);
-    text-align: right;
-}
-
-/* Odkazy pod historií */
-.history-links {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    flex-wrap: wrap;
-    max-width: 900px;
-    margin: 0 auto;
-}
-
-/* Tablety a menší laptopy (do 1024px) */
+/* 1. Tablety a iPady (šířka do 1024px) */
 @media (max-width: 1024px) {
     html {
         scroll-padding-top: 0;
     }
 
-    /* Hlavička jako standardní flex kontejner bez překrývání */
+    /* Hlavička přirozeně odroluje a prvky se seřadí pod sebe, aby se nepřekrývaly */
     .header {
-        position: relative;
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-between;
-        padding: 10px 20px;
-        gap: 20px;
+        position: absolute !important;
+        top: 0;
+        left: 0;
+        right: 0;
+        width: 100%;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important;
+        padding: 14px 15px !important;
+        gap: 12px !important;
+        box-sizing: border-box;
     }
 
-    /* Zmenšení loga, aby neubíralo tolik místa z řádku */
     .logo-big {
-        flex: 0 0 auto;
+        flex: 0 0 auto !important;
+        margin: 0 !important;
     }
 
     .logo-img {
-        height: 65px;
-        width: 65px;
+        height: 60px !important;
+        width: 60px !important;
     }
 
-    /* Zrušení absolutního centrování – menu se usadí vedle loga */
+    /* Úplné zrušení absolutního centrování – konec jakéhokoliv překrývání s logem */
     .nav-punky {
-        position: static;
-        transform: none;
-        width: auto;
-        flex: 1;
+        position: static !important;
+        transform: none !important;
+        width: 100% !important;
+        display: flex !important;
+        justify-content: center !important;
     }
 
     .nav-punky ul {
-        display: flex;
-        justify-content: flex-end;
-        gap: 16px;
-        flex-wrap: wrap;
+        display: flex !important;
+        flex-direction: row !important;
+        flex-wrap: wrap !important;
+        justify-content: center !important;
+        gap: 10px 18px !important;
+        margin: 0 !important;
+        padding: 0 !important;
     }
 
     .nav-punky ul li a {
-        font-size: 14px;
-        letter-spacing: 1.5px;
-        padding: 4px 0;
+        font-size: 14px !important;
+        letter-spacing: 1.5px !important;
+        padding: 2px 4px !important;
     }
 
+    /* Bezpečné odsazení hero sekcí od hlavičky */
     .hero,
     .gallery-hero,
     .history-hero {
-        padding-top: 40px;
-        min-height: auto;
-        height: auto;
-        padding-bottom: 60px;
+        padding-top: 170px !important;
+        min-height: auto !important;
+        height: auto !important;
+        padding-bottom: 60px !important;
     }
 
     .music-two-cols {
@@ -1166,95 +992,53 @@ a {
     }
 }
 
-/* Běžné chytré telefony (do 768px) */
+/* 2. Mobilní telefony (iPhone na výšku i na šířku – do 768px) */
 @media (max-width: 768px) {
     .section {
-        padding: 50px 15px;
+        padding: 45px 15px;
     }
 
     .section-title {
         font-size: 36px;
     }
 
-    /* Odstranění fixní pozice – lišta přirozeně odroluje se stránkou */
     .header {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: flex-start;
-        padding: 8px 12px;
-        gap: 12px;
-    }
-
-    /* Zmenšení loga na méně než polovinu (46px) */
-    .logo-big {
-        flex: 0 0 auto;
+        padding: 10px !important;
+        gap: 8px !important;
     }
 
     .logo-img {
-        height: 46px;
-        width: 46px;
-    }
-
-    /* Navigace v jedné řadě přímo vedle loga */
-    .nav-punky {
-        position: static;
-        transform: none;
-        width: auto;
-        flex: 1;
+        height: 48px !important;
+        width: 48px !important;
     }
 
     .nav-punky ul {
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        align-items: center;
-        justify-content: flex-start;
-        gap: 6px 12px;
-        margin: 0;
-        padding: 0;
+        gap: 6px 12px !important;
     }
 
     .nav-punky ul li a {
-        font-size: 13px;
-        letter-spacing: 1px;
-        padding: 2px 0;
+        font-size: 12px !important;
+        letter-spacing: 1px !important;
     }
 
-    /* Úprava horního odsazení hero sekcí pro menší lištu */
-    .hero {
-        padding-top: 90px;
-    }
-
+    .hero,
     .gallery-hero,
     .history-hero {
-        padding-top: 90px;
-        min-height: 40vh;
-        height: auto;
+        padding-top: 140px !important;
     }
-    /* Typografie v Hero sekcích */
+
+    /* Typografie a tlačítka */
     .punk-title,
     .gallery-hero-title,
     .history-hero-title {
-        font-size: 44px;
+        font-size: 42px;
         letter-spacing: 2px;
     }
 
     .punk-title .subtitle,
     .gallery-hero-title .subtitle,
     .history-hero-title .subtitle {
-        font-size: 26px;
-    }
-
-    .punk-tagline {
-        font-size: 15px;
-        letter-spacing: 1.5px;
-        margin: 15px 0 25px;
-        word-spacing: 4px;
+        font-size: 24px;
     }
 
     .hero-buttons {
@@ -1271,7 +1055,7 @@ a {
         text-align: center;
     }
 
-    /* Členové kapely – 1 sloupec */
+    /* Karty členů a formuláře */
     .members {
         grid-template-columns: 1fr;
         gap: 15px;
@@ -1281,7 +1065,6 @@ a {
         transform: none !important;
     }
 
-    /* Sekce Hudba */
     .tracklist-box,
     .online-box {
         padding: 20px 15px;
@@ -1294,123 +1077,67 @@ a {
     }
 
     .track-link {
-        padding: 16px 18px;
-        gap: 14px;
+        padding: 14px 16px;
+        gap: 12px;
         transform: none;
     }
 
-    .track-name {
-        font-size: 18px;
-    }
-
-    .track-meta {
-        font-size: 11px;
-    }
-
-    /* Koncerty a kontakty */
     .concert-list li {
         grid-template-columns: 1fr;
-        gap: 10px;
-        padding: 20px;
+        gap: 8px;
+        padding: 18px;
         transform: none;
     }
 
-    .merch-items {
+    .merch-items,
+    .contact-info,
+    .history-lineup-grid {
         grid-template-columns: 1fr;
     }
 
-    .contact-info {
-        grid-template-columns: 1fr;
-        gap: 15px;
-    }
-
-    .contact-box {
-        padding: 25px 15px;
+    .contact-box,
+    .history-period,
+    .video-container {
+        padding: 20px 15px;
         transform: none;
     }
 
-    /* Galerie a video */
     .gallery-grid {
         grid-template-columns: repeat(2, 1fr);
-        gap: 12px;
+        gap: 10px;
     }
 
     .gallery-item {
         transform: none !important;
     }
 
-    .video-container {
-        padding: 12px;
-        transform: none;
-    }
-
-    .video-wrapper {
-        padding-bottom: 56.25%;
-    }
-
-    /* Historie */
-    .history-period {
-        padding: 20px 15px;
-        transform: none;
-    }
-
-    .history-lineup-grid {
-        grid-template-columns: 1fr;
-    }
-
     .gig-row {
         grid-template-columns: 1fr;
         gap: 4px;
-        padding: 10px;
     }
 
     .gig-place {
         text-align: left;
     }
-
-    .history-links {
-        flex-direction: column;
-        gap: 15px;
-    }
-
-    .history-links .btn {
-        width: 100%;
-        text-align: center;
-    }
 }
 
-/* Malé telefony (do 480px) */
+/* 3. Nejmenší displeje (do 480px) */
 @media (max-width: 480px) {
     .nav-punky ul {
-        gap: 8px 14px;
+        gap: 4px 10px !important;
     }
 
     .nav-punky ul li a {
-        font-size: 13px;
-        letter-spacing: 1px;
-    }
-
-    .punk-title,
-    .gallery-hero-title,
-    .history-hero-title {
-        font-size: 34px;
-    }
-
-    .punk-title .subtitle,
-    .gallery-hero-title .subtitle,
-    .history-hero-title .subtitle {
-        font-size: 20px;
+        font-size: 11px !important;
     }
 
     .gallery-grid {
         grid-template-columns: 1fr;
     }
 
-    .songs-table td:first-child {
-        width: 32px;
-    }
-
-    .songs-table td:last-child {
-        width: 50px;
+    .punk-title,
+    .gallery-hero-title,
+    .history-hero-title {
+        font-size: 32px;
     }
 }
